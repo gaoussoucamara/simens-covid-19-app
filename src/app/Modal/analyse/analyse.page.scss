@@ -1,0 +1,47 @@
+
+#titrepage{
+    color: rgb(11, 124, 11);
+    font-weight: bold;
+    font-size: 17px;
+    font-family: Times New Roman;
+    color: green;
+}
+
+.styleDesignInterfaceAnalyse
+{
+    border: 0.5px solid #cccccc;
+    padding-right: 5px;
+    padding-left: 1px;
+    padding-bottom: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0pt 0pt 10px rgba(0, 0, 0, 0.10);
+}
+
+#tabInfosStatistique td
+{
+    border: 0.5px solid #cccccc;
+    text-align: center;
+    padding: 3px;
+    margin: 5px;
+    font-weight: bold;
+    color: gray;
+}
+
+#tabInfosStatistique
+{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.libellePaysStyle
+{
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 19px; 
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}

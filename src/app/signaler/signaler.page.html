@@ -1,0 +1,414 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="titre"><span>SIMENS</span> - COVID-19 Sénégal  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="contenuPage">
+  
+  <div class="div" id="donneesEtatCivil">
+    <ion-list-header class="titrepage">
+      &#9883; ETAT-CIVIL
+    </ion-list-header>
+
+    <form #form="ngForm" (ngSubmit)="sendEtatCivil(form)">
+
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+        <ion-item>
+          <ion-label class="ionlabel">Sexe <ion-text color="danger">* : </ion-text></ion-label>
+          <ion-select style="position: absolute; left: 20%;" interface="popover" class="ioninfo infoEC1" name="sexe" id="sexe" ngModel required>
+            <ion-select-option value="1">Masculin</ion-select-option>
+            <ion-select-option value="2">Féminin</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Prénom <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC2" type="text" name="prenom" id="prenom" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Nom <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC3" type="text" name="nom" id="nom" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Date naissance <ion-text color="danger"></ion-text> : </ion-label>
+          <ion-datetime class="ioninfo infoEC4" style="position: absolute; left: 50%;" name="date_naissance" id="date_naissance" placeholder="Selectionner" display-format="DD/MM/YYYY" picker-format="DD MM YYYY"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Age <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC5" type="number" name="age" id="age" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Région <ion-text color="danger">* : </ion-text></ion-label>
+          <ion-select style="position: absolute; left: 20%; min-width: 190px;" (ionChange)="selectDepartement($event)" interface="popover" class="ioninfo infoEC6" name="region" id="region" ngModel required>
+            <ion-select-option value=1>DAKAR</ion-select-option>
+            <ion-select-option value=2>DIOURBEL</ion-select-option>
+            <ion-select-option value=3>FATICK</ion-select-option>
+            <ion-select-option value=4>KAFFRINE</ion-select-option>
+            <ion-select-option value=5>KAOLACK</ion-select-option>
+            <ion-select-option value=6>KEDOUGOU</ion-select-option>
+            <ion-select-option value=7>KOLDA</ion-select-option>
+            <ion-select-option value=8>LOUGA</ion-select-option>
+            <ion-select-option value=9>MATAM</ion-select-option>
+            <ion-select-option value=10>SAINT-LOUIS</ion-select-option>
+            <ion-select-option value=11>SEDHIOU</ion-select-option>
+            <ion-select-option value=12>TAMBACOUNDA</ion-select-option>
+            <ion-select-option value=13>THIES</ion-select-option>
+            <ion-select-option value=14>ZIGUINCHOR</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Département <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-select style="position: absolute; left: 40%; min-width: 180px;" interface="popover" class="ioninfo infoEC7" name="departement" id="departement" ngModel required>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Adresse <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC8" type="text" name="adresse" id="adresse" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Téléphone 1 <ion-text color="danger">*</ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC9" name="telephone1" id="telephone1"  type="number" oninput="if(value.length>9)value=value.slice(0,9)" minlength="9" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Téléphone 2 <ion-text color="danger"></ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC10" type="number" name="telephone2" id="telephone2"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ionlabel">Adresse e-mail<ion-text color="danger"></ion-text> : </ion-label>
+          <ion-input class="ioninfo infoEC11" type="text" name="email" id="email"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button type="submit" [disabled]="form.invalid" color="success">SYMPTOMES</ion-button>
+
+    </form>
+
+  </div>
+
+  <div id="donneesSymptomes" style="display: none;">
+    
+    <div class="div titrepage" id="iconePrecedent" >&#9664; ETAT-CIVIL </div>
+
+      <div class="div" >
+   
+        <ion-list-header class="titrepage">
+          &#9883; SYMPTOMES
+        </ion-list-header>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/1.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 1)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Fièvre</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/3.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 2)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Fatigue</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/2.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 3)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Tousser et/ou Toux sèche</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/4.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 4)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Difficultés à respirer</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/4.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 5)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Douleurs à la respiration</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 6)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Douleurs aux muscles</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 7)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Douleurs aux articulations</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 8)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Mal de gorge</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 9)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Nez bouché</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 10)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Nez qui coule</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 11)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Vertige</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 12)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Perte d'appétit</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        <ion-item>
+          <table style="width: 100%;">
+            <tr style="width: 100%;">
+              <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+              <td class="col2"><ion-checkbox color="primary" (ionChange)="checkSymptomes($event, 13)"></ion-checkbox></td>
+              <td class="col3"><ion-label>Diarrhée</ion-label></td>
+            </tr>
+          </table>
+        </ion-item>
+
+        
+        <ion-button type="submit" id="buttonSendSymptomes" color="success" (click)="sendSymptomes()" >ANTECEDENTS</ion-button>
+      </div>
+      
+
+  </div>
+
+
+
+  <div id="donneesAntecedents" style="display: none;">
+    
+    <div class="div titrepage" id="retourSymptomes" >&#9664; SYMPTOMES </div>
+
+    <div class="div" >
+   
+      <ion-list-header class="titrepage">
+        &#9883; HABITUDES. & ANTECEDENTS
+      </ion-list-header>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 1)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Fumeur</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 2)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Consommation d'alcool</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 3)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Diabétique</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 4)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Hypertension artérielle</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 5)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Asthmatique</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 6)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Maladie cardiaque</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 7)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Obésité</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 8)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Contact avec un malade</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item>
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <td class="col1"><img class="icon-cov" src="../../assets/img/X.icon-symp-cov19.png"></td>
+            <td class="col2"><ion-checkbox color="primary" (ionChange)="checkAntecedents($event, 9)"></ion-checkbox></td>
+            <td class="col3"><ion-label>Retour de voyage</ion-label></td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-button type="submit" id="buttonSendAntecedents" color="success" (click)="sendAntecedents()" >CONFIRMER</ion-button>
+    </div>
+
+
+  </div>
+
+
+
+  <div id="confirmationEnvoie" style="display: none;">
+    
+    <div class="div titrepage" id="retourAntecedent" >&#9664; ANTECEDENTS </div>
+
+    <div class="div" style="text-align: center;">
+  
+      <ion-list-header >
+        <span style="width: 100%; font-weight: bold; color: green; text-align: center;"> CLIQUER SUR TERMINER POUR VALIDER </span>
+      </ion-list-header>
+
+      <ion-text>
+        <p style="text-align: center; font-family: police1; padding: 8px; font-size: 12px;">
+          En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient utilisées dans le cadre de la lutte contre le Covid-19 au Sénégal.
+        </p>
+      </ion-text>
+
+      <div id="iconChargementInfosCovid19" style="margin: -20px; display: none;"><img style="width: 45px; height: 55px;" class="icon-cov" src="../../assets/img/chargement-infos-covid19.gif"></div>
+
+      <ion-button type="submit" id="buttonSendDonneesFinales" color="success" (click)="sendDonneesFinales()" >TERMINER</ion-button>
+    </div>
+
+  </div>
+
+
+  <div id="confirmationEnvoieEffectif" style="display: none;">
+    
+    <div class="div" style="text-align: center; color: green; font-weight: bold; padding-top: 15px;">
+      VOS INFORMATIONS SONT TRANSMISES AUX AUTORITES SANITAIRES
+
+      <ion-text>
+        <p style="text-align: center; padding: 10px; color: red;">
+          Veuillez patienter chez vous, une équipe vous contactera dans les meilleurs délais pour votre prise en charge !
+        </p>
+      </ion-text>
+
+      <!--ion-button type="submit" color="success" (click)="pageAcceuil()" style="margin-top: 15px;" >Terminer</ion-button-->
+
+      <div style="text-align: center; color: black; font-weight: normal; padding-top: 25px; border-top: 1px solid #eeeeee;">
+        Acceptez vous le recueil de vos données de localisation ? Elles seront utilisées de façon anonyme. 
+      </div>
+
+      <div id="iconChargementInfosCovid19_2" style="margin: -20px; display: none;"><img style="width: 45px; height: 55px;" class="icon-cov" src="../../assets/img/chargement-infos-covid19.gif"></div>
+
+      <ion-button type="submit" color="success" (click)="pageAcceuil()" style="margin-top: 15px;" >Non</ion-button>
+      <ion-button type="submit" color="success" (click)="checkGPSPermission()" style="margin-top: 15px;" >Oui</ion-button>
+
+    </div>
+
+  </div>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,63 @@
+
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="titre"><span>SIMENS</span> - COVID-19 Sénégal  </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content fullscreen class="contenuPage">
+
+    <section>
+      <div id="div1" class="div">
+        Application pour s’auto-signaler lorsque vous présentez des signes du coronavirus (COVID-19)
+      </div>
+    </section>
+
+    <section id="section1" (click)="autoSignalisation()">
+      <ion-button expand="block" color="danger" size="large" >Signalez-vous !</ion-button>
+    </section>
+
+    <section>
+      <div id="div2" class="div">
+        <span class="blinkin">Mesures de protection contre le coronavirus (COVID-19)</span> 
+
+        <table class="tabinfos"> 
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/1.icon-cov19.png"> </td>
+            <td class="col2"> Lavez-vous régulièrement et correctement les mains à l'eau et au savon </td>
+          </tr>
+
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/2.icon-cov19.png"> </td>
+            <td class="col2"> Evitez de serrer des mains ou de faire la bise </td>
+          </tr>
+
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/3.icon-cov19.png"> </td>
+            <td class="col2"> Evitez les contacts proches avec les personnes malades </td>
+          </tr>
+
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/4.icon-cov19.png"> </td>
+            <td class="col2"> Toussez ou éternuez dans le pli du coude ou un mouchoir en papier </td>
+          </tr>
+
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/5.icon-cov19.png"> </td>
+            <td class="col2"> Evitez de toucher votre visage avec vos mains </td>
+          </tr>
+
+          <tr>
+            <td class="col1"> <img class="icon-cov" id="logo_simens" src="../../assets/img/6.icon-cov19.png"> </td>
+            <td class="col2"> En cas de maladie, restez à la maison, n'allez pas au travail ou à l'école </td>
+          </tr>
+
+        </table>
+
+      </div>
+    </section>
+
+  </ion-content>
